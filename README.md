@@ -11,5 +11,6 @@ Requirements:
 * Validate phone number: https://www.bigdatacloud.com/phone-email-verification/phone-number-validation-api for  international and national phone number validation based on the E.164
 * Validate the user has acceess to the email
 * Validate the user has access to the phone number
-* 
-* 
+
+
+For sample commands when running in localhost, see [commands.md](commands.md)
