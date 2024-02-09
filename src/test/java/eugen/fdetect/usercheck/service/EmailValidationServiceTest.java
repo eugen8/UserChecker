@@ -18,8 +18,8 @@ public class EmailValidationServiceTest {
             "star@domain.net,domain.net",
             "star+anotheruser@domain.net,domain.net"
     })
-    void testValidEmailAddresses(String anEmail, String aDomain) {
-        String domain = emailValidationService.validateEmail(anEmail);
+    void testValidateAndGetDomain(String anEmail, String aDomain) {
+        String domain = emailValidationService.validateAndGetDomain(anEmail);
         assertEquals(domain, aDomain);
     }
 
@@ -31,8 +31,8 @@ public class EmailValidationServiceTest {
             "user@invalid..com",
             "user@invalid.."
     })
-    void testInvalidEmailAddresses(String email) {
-        String domain = emailValidationService.validateEmail(email);
+    void testValidateAndGetDomain_returnNullWhenInvalid(String email) {
+        String domain = emailValidationService.validateAndGetDomain(email);
         assertNull(domain);
     }
 }

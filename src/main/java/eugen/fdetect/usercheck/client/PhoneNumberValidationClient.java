@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
+import java.io.IOException;
+
 @Service
 public class PhoneNumberValidationClient {
 
@@ -15,6 +17,11 @@ public class PhoneNumberValidationClient {
 
     public PhoneNumberValidResponse makeAbstractRequest(String phoneNumber) {
         if (isMock) {
+            if("1234".equals(phoneNumber)){
+                return new PhoneNumberValidResponse("1234", false, null);
+            } else if("000".equals(phoneNumber)){
+                throw new RuntimeException("Could not connect to the service");
+            }
             return new PhoneNumberValidResponse("14152007986", true, new PhoneNumberFormat("+14152007986", "(415) 200-7986", "US"));
         }
         RestClient client = RestClient.create();
